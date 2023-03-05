@@ -26,3 +26,13 @@
 #define SERIAL_USART_PIN_SWAP // pin swap since i did them pin to pin
 #define SERIAL_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the Serial implementation uses the PIO0 peripheral
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // so i dont need both buttons
+
+// i saw this on the ergodox config. betting its needed to set tapping to 120ms
+#define TAPPING_TERM 120
+
+// combo amount
+#define COMBO_COUNT 1
+
+// nkro on boot, remove to remove
+
+// #define FORCE_NKRO
