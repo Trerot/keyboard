@@ -11,14 +11,13 @@ enum layer_names {
   _LOWER,
   _RAISE,
   _ADJUST,
-};
-
-enum macro_keycodes {
-  SIGN_MU,
+  _GAME,
+  _GAMERAISE,
 };
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define GAMERAISE MO(_GAMERAISE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -58,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TILD,         KC_EXLM,           NO_AT,          KC_HASH,        NO_DLR,           KC_PERC,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,       KC_RPRN,       KC_BSPC,
   KC_TRANSPARENT,  KC_TRANSPARENT,    LGUI(KC_DOT),   KC_TRANSPARENT, LCTL(KC_L),       LGUI(KC_TAB),   KC_TRANSPARENT, NO_QUES,        KC_TRANSPARENT, NO_LPRN,       NO_RPRN,       NO_SLSH,
   KC_TRANSPARENT,  LCTL(KC_A),        LCTL(KC_S),     LGUI(KC_E),     LGUI(LSFT(KC_S)), LSFT(KC_F10),   KC_TRANSPARENT, NO_AE,          NO_OSTR,        NO_LBRC,       NO_RBRC,       NO_BSLS,
-  KC_TRANSPARENT,  LCTL(KC_Z),        LCTL(KC_X),     LCTL(KC_C),     LCTL(KC_V),       LGUI(KC_V),     SIGN_MU,        NO_LABK,        NO_RABK,        NO_LCBR,       NO_RCBR,       NO_PIPE,
+  KC_TRANSPARENT,  LCTL(KC_Z),        LCTL(KC_X),     LCTL(KC_C),     LCTL(KC_V),       LGUI(KC_V),     NO_MICR,        NO_LABK,        NO_RABK,        NO_LCBR,       NO_RCBR,       NO_PIPE,
   KC_TRANSPARENT,  KC_TRANSPARENT,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MPRV,        KC_MSTP,       KC_MPLY,       KC_MNXT
 ),
 
@@ -97,38 +96,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] =  LAYOUT(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+  KC_F1,                 KC_F2,          KC_F3,          KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
   KC_F1,                 KC_F1,          KC_F2,          KC_F3,          KC_F4,             KC_F5,               KC_F6,               KC_F7,           KC_F8,          KC_F9,          KC_F10,         KC_F11,
-  LALT(LCTL(KC_DELETE)), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_HOME,           KC_PAGE_DOWN,        KC_PGUP,             KC_END,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_F12,
+  LALT(LCTL(KC_DELETE)), NO_LABK,        NO_LCBR,        NO_LBRC,        NO_LPRN,        KC_HOME,             KC_END,          KC_RBRC, KC_TRANSPARENT,KC_TRANSPARENT, KC_TRANSPARENT, KC_F12,
   KC_TRANSPARENT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_AUDIO_VOL_DOWN, KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, KC_AUDIO_VOL_UP, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-  RGB_TOG,        RGB_MODE_FORWARD, RGB_VAI, KC_TRANSPARENT, KC_TRANSPARENT,    KC_TRANSPARENT,      KC_TRANSPARENT,      KC_TRANSPARENT,  KC_TRANSPARENT, QK_BOOTLOADER,  QK_REBOOT,      KC_TRANSPARENT
+  RGB_TOG,        RGB_MODE_FORWARD, RGB_VAI, KC_TRANSPARENT, KC_TRANSPARENT,    KC_TRANSPARENT,      KC_TRANSPARENT,      KC_TRANSPARENT,  KC_TRANSPARENT, QK_BOOTLOADER,  QK_REBOOT,      TG(_GAME)
 
-)
-
+),
+// qwerty based, no lower layout, for gaming. try it out. 
+[_GAME] =  LAYOUT(
+        KC_GRV, KC_1,  KC_2,  KC_3,  KC_4,  KC_5,              KC_6,  KC_7,  KC_8,  KC_9,  KC_0,  KC_MINS,
+        KC_TAB, KC_Q,  KC_W,  KC_E,  KC_R,  KC_T,              KC_Y,  KC_U,  KC_I,  KC_O,  KC_P,  KC_BSLS,
+        KC_ESC,  KC_A,  KC_S,  KC_D,  KC_F,  KC_G,               KC_H,  KC_J,  KC_K,  KC_L,  KC_SCLN, KC_QUOT,
+        KC_LSFT, KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,              KC_N,  KC_M,  KC_COMM, KC_DOT, KC_SLSH, MT(MOD_LSFT, KC_ENTER),
+        KC_LCTL, KC_M,  KC_I,  KC_LGUI,KC_LALT,KC_SPC,         KC_BSLS, GAMERAISE, KC_RALT, KC_RGUI, KC_RCTL, KC_BSPC
+),
+// gaming with raise layer
+[_GAMERAISE] = LAYOUT(
+        KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,         KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,
+        KC_TAB, KC_Q,  KC_W,  KC_E,  KC_R,  KC_T,              KC_Y,  KC_U,  KC_I,  KC_O,  KC_P,  KC_BSLS,
+        KC_ESC,  KC_A,  KC_S,  KC_D,  KC_F,  KC_G,               KC_H,  KC_J,  KC_K,  KC_L,  KC_SCLN, KC_QUOT,
+        KC_LSFT, KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,              KC_N,  KC_M,  KC_COMM, KC_DOT, KC_SLSH, MT(MOD_LSFT, KC_ENTER),
+        KC_LCTL, KC_M,  KC_I,  KC_LGUI,KC_LALT,KC_SPC,         KC_BSLS, GAMERAISE, KC_RALT, KC_RGUI, KC_RCTL, TG(_GAME)
+      )
 
 };
 
 // combos
-
+// used for ctrl-alt-delete
 const uint16_t PROGMEM combo0[] = { KC_E, KC_A, KC_S, KC_T, COMBO_END};
+// used for game layer
+const uint16_t PROGMEM combo1[] = { KC_G, KC_A, KC_M, KC_E, COMBO_END};
+
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(combo0, LALT(LCTL(KC_DELETE)))
+   [0] = COMBO(combo0, LALT(LCTL(KC_DELETE))),
+   [1] = COMBO(combo1, TG(_GAME) )
 };
-
-// macros
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-switch (keycode) {
-    case SIGN_MU:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_1) ));
-    }
-    break;
-
-}
-return true;
-}
 
 // dunno what this does but see it all over
 layer_state_t layer_state_set_user(layer_state_t state) {

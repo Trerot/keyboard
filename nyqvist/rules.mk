@@ -1,3 +1,3 @@
-RGBLIGHT_ENABLE = yes
+RGBLIGHT_ENABLE = NO
 # combo keys
 COMBO_ENABLE = yes

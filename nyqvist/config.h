@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
+
 #undef RGBLED_NUM
 #define RGBLIGHT_EFFECT_BREATHING
 #define RGBLIGHT_EFFECT_RAINBOW_MOOD
@@ -39,8 +40,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
 
+// hopefully this means RGB is OF by default
+#define LED_DISABLE
+#define RGBLIGHT_DISABLE
+#define BACKLIGHT_DISABLE
+
 // i saw this on the ergodox config. betting its needed to set tapping to 120ms
 #define TAPPING_TERM 120
 
 // combo amount
-#define COMBO_COUNT 1
+#define COMBO_COUNT 2
