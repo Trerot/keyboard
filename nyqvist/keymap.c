@@ -21,22 +21,23 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* BEAKL 27, Norsemod
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   H  |   O  |   U  |   X  |   G  |   C  |   M  |   R  |   V  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   Y  |   I  |   E  |   A  |   .  |   D  |   S  |   T  |   N  |   B  |  -   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   J  |   Å  |   ,  |   K  |   '  |   W  |   F  |   L  |   P  |   Z  |Ent/sh|
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  |   µ  | Alt  |Lower |Space | Bksp |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
+    /* keys with a / in them, like SPC/sft are two keys. First key when tapped, second key when held for 120ms. 
+      * beakl43, norwegian layout.
+     * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
+     * │ Tab │  Q  │   H │   O │   U │   , │                   │  G  │  L  │  R  │  F  │  B  │  ESC  │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │ CTRL│  J  │   I │   E │   A │  Y  │                   │  D  │  T  │  S  │  N  │  P  │ -     │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │ Sft │  X  │  K  │  Å  │  .  │ '   │                   │  V  │  M  │  C  │  W  │  Z  │Ent/sft│
+     * └─────┴─────┴─────┼─────┼─────┼─────┤────────┐    ┌─────├─────┼─────┼─────┴─────┴─────┴───────┘
+     *                         │ Alt │Lower│ SPC/sft│    │BSPC │Raise│ Ctl │
+     *                         └─────┴─────┴────────┘    └─────┴─────┴─────┘ 
+     */
 [_BEAKL] = LAYOUT(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_BSPC,
-  KC_TAB,  KC_Q,    KC_H,    KC_O,    KC_U,    KC_X,    KC_G,    KC_C,    KC_M,    KC_R,    KC_V,   KC_BSPC,
-  KC_ESC,  KC_Y,    KC_I,    KC_E,    KC_A,    KC_DOT,  KC_D,    KC_S,    KC_T,    KC_N,    KC_B,   NO_MINS,
-  KC_LSFT, KC_J,    NO_ARNG, KC_COMM, KC_K,    NO_QUOT, KC_W,    KC_F,    KC_L,    KC_P,    KC_Z,   MT(MOD_LSFT, KC_ENTER),
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   LOWER,
+  KC_TAB,  KC_Q,    KC_H,    KC_O,    KC_U,    KC_COMM,                                      KC_G,    KC_L,    KC_R,    KC_F,    KC_B,   LOWER,
+  KC_ESC,  KC_J,    KC_I,    KC_E,    KC_A,    KC_Y,                                         KC_D,    KC_T,    KC_S,    KC_N,    KC_P,   NO_MINS,
+  KC_LSFT, KC_X,    KC_K,    NO_ARNG, KC_DOT,  NO_QUOT,                                      KC_V,    KC_M,    KC_C,    KC_W,    KC_Z,   MT(MOD_LSFT, KC_ENTER),
   KC_LCTL, KC_LGUI, NO_MICR,   KC_LALT, LOWER,   KC_SPC,  KC_BSPC, RAISE,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
