@@ -46,7 +46,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BACKLIGHT_DISABLE
 
 // i saw this on the ergodox config. betting its needed to set tapping to 120ms
-#define TAPPING_TERM 120
+#define TAPPING_TERM 175
 
 // combo amount
 #define COMBO_COUNT 2

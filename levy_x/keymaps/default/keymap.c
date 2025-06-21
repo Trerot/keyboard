@@ -11,58 +11,56 @@ enum layers {
   _ADJUST,
 };
 
-enum macro_keycodes {
-  SIGN_MU,
-};
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /*  Base layer
-     * ┌─────┬─────┬─────┬─────┬─────┬─────┐      ┌─────┬─────┬─────┬─────┬─────┬───────┐
-     * │Tab  │  Q  │   H │   O │   U │   X │      │   G │   C │   M │   R │   V │ BSPC  │
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Esc  │  Y  │   I │   E │   A │   . │      │ D   │ S   │ T   │ N   │ B   │ -     │
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Sft  │  J  │  ;  │  ,  │  K  │ '   │      │ W   │ F   │ L   │ P   │ Z   │Ent/sft│ (shift when held for 120ms, enter when tapped)
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Ctl  │Gui  │  NO │ Alt │Lower│ SPC │      │BSPC │Raise│Lft  │Dwn  │Up   │Rgt    │
-     * └─────┴─────┴─────┴─────┴─────┴─────┘      └─────┴─────┴─────┴─────┴─────┴───────┘
+    /* keys with a / in them, like SPC/sft are two keys. First key when tapped, second key when held for 120ms. 
+      * beakl43, norwegian layout.
+     * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
+     * │ Tab │  Q  │   H │   O │   U │   , │                   │  G  │  L  │  R  │  F  │  B  │  ESC  │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │ CTRL│  J  │   I │   E │   A │  Y  │                   │  D  │  T  │  S  │  N  │  P  │ -     │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │ Sft │  X  │  K  │  Å  │  .  │ '   │                   │  V  │  M  │  C  │  W  │  Z  │Ent/sft│
+     * └─────┴─────┴─────┴─────┼─────┼─────┤────────┐    ┌─────├─────┼─────┼─────┴─────┴─────┴───────┘
+     *                         │Lower│Space│        │    │     │BSPC │Raise│
+     *                         └─────┴─────┴────────┘    └─────┴─────┴─────┘ 
      */
     [_BEAKL] = LAYOUT_ortho_4x12(
-  KC_TAB,  KC_Q,    KC_H,    KC_O,    KC_U,    KC_X,    KC_G,    KC_C,    KC_M,    KC_R,    KC_V,   KC_ESC,
-  KC_ESC,  KC_Y,    KC_I,    KC_E,    KC_A,    KC_DOT,  KC_D,    KC_S,    KC_T,    KC_N,    KC_B,   NO_MINS,
-  KC_LSFT, KC_J,    NO_ARNG, KC_COMM, KC_K,    NO_QUOT, KC_W,    KC_F,    KC_L,    KC_P,    KC_Z,   MT(MOD_LSFT, KC_ENTER),
+  KC_TAB,  KC_Q,    KC_H,    KC_O,    KC_U,    KC_COMM,                                      KC_G,    KC_L,    KC_R,    KC_F,    KC_B,   KC_NO,
+  KC_ESC,  KC_J,    KC_I,    KC_E,    KC_A,    KC_Y,                                         KC_D,    KC_T,    KC_S,    KC_N,    KC_P,   NO_MINS,
+  KC_LSFT, KC_X,    KC_K,    NO_ARNG, KC_DOT,  NO_QUOT,                                      KC_V,    KC_M,    KC_C,    KC_W,    KC_Z,   MT(MOD_LSFT, KC_ENTER),
   KC_LCTL, KC_LGUI, NO_MICR,   KC_LALT, LOWER,   KC_SPC,  KC_BSPC, RAISE,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
     /*  Lower
-     * ┌─────┬─────┬─────┬─────┬─────┬─────┐      ┌─────┬─────┬─────┬─────┬─────┬───────┐
-     * │Tab  │  Q  │Gu+. │   O │Sft+L│Gu+tb│      │   G │   C │   M │   R │   V │ BSPC  │
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Esc  │  Y  │   I │   E │   A │   . │      │ D   │ S   │ T   │ N   │ B   │ -     │
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Sft  │ J   │ ;   │ ,   │ K   │ '   │      │ W   │ F   │ L   │ P   │ Z   │Ent/sft│ (shift when held for 120ms, enter when tapped)
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Ctl  │Gui  │  NO │ Alt │Lower│ SPC │      │BSPC │Raise│Lft  │Dwn  │Up   │Rgt    │
-     * └─────┴─────┴─────┴─────┴─────┴─────┘      └─────┴─────┴─────┴─────┴─────┴───────┘
+     * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
+     * │Al+ta│Ctl+W│Gu+. │c+s+p│CTR+L│Wi+tb│                   │     │ ?   │     │ (   │ )   │   /   │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │     │Ctl+A│Ctl+S│Win+E│ScrSh│S+F10│                   │     │ Æ   │ Ø   │ [   │ ]   │   \   │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │     │Ctl+Z│Ctl+X│Ctl+C│Ctl+V│Win+V│                   │  µ  │ <   │ >   │ {   │ }   │   |   │
+     * └─────┴─────┴─────┼─────┼─────┼─────┤────────┐    ┌─────├─────┼─────┼─────┴─────┴─────┴───────┘
+     *                         │     │Lower│        │    │CT+bs│Raise│     │
+     *                         └─────┴─────┴────────┘    └─────┴─────┴─────┘ 
      */
     [_LOWER] = LAYOUT_ortho_4x12(
   KC_TRANSPARENT,  KC_TRANSPARENT,    LGUI(KC_DOT),   KC_TRANSPARENT, LCTL(KC_L),       LGUI(KC_TAB),   KC_TRANSPARENT, NO_QUES,        KC_TRANSPARENT, NO_LPRN,       NO_RPRN,       NO_SLSH,
   KC_TRANSPARENT,  LCTL(KC_A),        LCTL(KC_S),     LGUI(KC_E),     LGUI(LSFT(KC_S)), LSFT(KC_F10),   KC_TRANSPARENT, NO_AE,          NO_OSTR,        NO_LBRC,       NO_RBRC,       NO_BSLS,
-  KC_TRANSPARENT,  LCTL(KC_Z),        LCTL(KC_X),     LCTL(KC_C),     LCTL(KC_V),       LGUI(KC_V),     SIGN_MU,        NO_LABK,        NO_RABK,        NO_LCBR,       NO_RCBR,       NO_PIPE,
-  KC_TRANSPARENT,  KC_TRANSPARENT,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MPRV,        KC_MSTP,       KC_MPLY,       KC_MNXT
+  KC_TRANSPARENT,  LCTL(KC_Z),        LCTL(KC_X),     LCTL(KC_C),     LCTL(KC_V),       LGUI(KC_V),     NO_MICR,        NO_LABK,        NO_RABK,        NO_LCBR,       NO_RCBR,       NO_PIPE,
+  KC_TRANSPARENT,  KC_TRANSPARENT,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,   KC_TRANSPARENT, LCTL(KC_BSPC), KC_TRANSPARENT, KC_MPRV,        KC_MSTP,       KC_MPLY,       KC_MNXT
 ),
     /*  Raise
-     * ┌─────┬─────┬─────┬─────┬─────┬─────┐      ┌─────┬─────┬─────┬─────┬─────┬───────┐
-     * │Tab  │   Q │   H │   O │   U │   X │      │   G │   C │   M │   R │   V │ BSPC  │
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Esc  │   Y │   I │   E │   A │   . │      │ D   │ S   │ T   │ N   │ B   │ -     │
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Sft  │ J   │ ;   │ ,   │ K   │ '   │      │ W   │ F   │ L   │ P   │ Z   │Ent/sft│ (shift when held for 120ms, enter when tapped)
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Ctl  │Gui  │  NO │ Alt │Lower│ SPC │      │BSPC │Raise│Lft  │Dwn  │Up   │Rgt    │
-     * └─────┴─────┴─────┴─────┴─────┴─────┘      └─────┴─────┴─────┴─────┴─────┴───────┘
+     * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
+     * │  `  │   ! │   @ │   # │   $ │   % │                   │   & │     |Home │PgDwn│ PgUp│ End   │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │CTRL │   4 │   2 │   3 │   1 │   5 │                   │ 6   │ 0   │ 8   │ 9   │ 7   │       │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │Sft  │  _  │  -  │  =  │  +  │  "  │                   │     │  =  │ left│ down│ up  │ right │
+     * └─────┴─────┴─────┼─────┼─────┼─────┤────────┐    ┌─────├─────┼─────┼─────┴─────┴─────┴───────┘
+     *                         │ Alt │Lower│sft+ctrl│    │     │Raise│     │
+     *                         └─────┴─────┴────────┘    └─────┴─────┴─────┘ 
      */
     [_RAISE] = LAYOUT_ortho_4x12(
   NO_GRV,         KC_EXLM,        NO_AT,          KC_HASH,        NO_DLR,         KC_PERC,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,
@@ -70,16 +68,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRANSPARENT, KC_TRANSPARENT, KC_SCLN,        KC_COMM,        NO_PLUS,        NO_DQUO,        KC_TRANSPARENT, NO_EQL,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
     ),
-    /*  Adjust
-     * ┌─────┬─────┬─────┬─────┬─────┬─────┐      ┌─────┬─────┬─────┬─────┬─────┬───────┐
-     * │Tab  │   Q │   H │   O │   U │   X │      │   G │   C │   M │   R │   V │ BSPC  │
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Esc  │   Y │   I │   E │   A │   . │      │ D   │ S   │ T   │ N   │ B   │ -     │
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Sft  │ J   │ ;   │ ,   │ K   │ '   │      │ W   │ F   │ L   │ P   │ Z   │Ent/sft│ (shift when held for 120ms, enter when tapped)
-     * ├─────┼─────┼─────┼─────┼─────┼─────┤      ├─────┼─────┼─────┼─────┼─────┼───────┤
-     * │Ctl  │Gui  │  NO │ Alt │Lower│ SPC │      │BSPC │Raise│Lft  │Dwn  │Up   │Rgt    │
-     * └─────┴─────┴─────┴─────┴─────┴─────┘      └─────┴─────┴─────┴─────┴─────┴───────┘
+    /*  Adjust (Lower + Raise)
+     * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
+     * │  `  │  F1 │  F2 │  F3 │  F4 │  F5 │                   │  F6 │  F7 │  F8 │  F9 │ F10 │  F11  │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │C+A+D│     │     │     │ Home│Pgdwn│                   │Pgup │ End │     │     │     │  F12  │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │ sft │     │     │     │     │     │                   │     │     │     │     │     │       │
+     * └─────┴─────┴─────┼─────┼─────┼─────┤────────┐    ┌─────├─────┼─────┼─────┴─────┴─────┴───────┘
+     *                         │     │Lower│        │    │     │Raise│     │
+     *                         └─────┴─────┴────────┘    └─────┴─────┴─────┘ 
      */
 
     [_ADJUST] =  LAYOUT_ortho_4x12( 
@@ -102,17 +100,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
 // macros
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-switch (keycode) {
-    case SIGN_MU:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_1) ));
-    }
-    break;
 
-}
-return true;
-}
 
 // dunno what this does but see it all over
 layer_state_t layer_state_set_user(layer_state_t state) {
