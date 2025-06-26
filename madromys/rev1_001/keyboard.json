@@ -19,5 +19,9 @@
     },
     "ws2812": {
         "pin": "GP12"
-    }
+    },
+    "modules": [
+        "drashna/drag_scroll"
+    ]
 }
+

@@ -17,42 +17,41 @@
  */
 #include QMK_KEYBOARD_H
 
-enum custom_keycodes {
-    BOOTLOADER = SAFE_RANGE,
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (keycode == BOOTLOADER && record->event.pressed) {
-        reset_keyboard();
-        return false;
-    }
-    return true;
-}
 
 // Define your combos
-const uint16_t PROGMEM boot_combo[] = {KC_A, KC_LEFT, KC_RIGHT, DRAG_SCROLL, COMBO_END};
+const uint16_t PROGMEM boot_combo[] = {KC_LEFT, KC_RIGHT, KC_BSPC, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(boot_combo, BOOTLOADER),
+    COMBO(boot_combo, QK_BOOT)
 };
+
+
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
-        KC_BTN4,
+        LT(2,KC_BTN4), // Tap = Button 4, Hold = Layer 2
         KC_BTN5,
-        DRAG_SCROLL, // Tap = Middle Click, Hold = Drag Scroll
+        DRAG_SCROLL,
         KC_BTN2,
         KC_BTN1,
         LT(1,KC_ENTER) // Tap = Enter, Hold = Layer 1
     ),
     [1] = LAYOUT(
-        KC_A, // Placeholder for unused keys
+        KC_BSPC, 
         KC_LEFT,
         KC_RIGHT,
-        DRAG_SCROLL,
-        KC_E,
+        LGUI(KC_TAB),
+        KC_COLN, // Tap Dance for Colon/Semicolon
         KC_F
+    ),
+    [2] = LAYOUT(
+        KC_A,
+        DPI_CONFIG, // DPI toggle to 100
+        KC_A,
+        KC_A,
+        KC_A,
+        KC_A
     )
 };
 /*

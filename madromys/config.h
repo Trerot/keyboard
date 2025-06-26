@@ -32,6 +32,27 @@
 #define SPI_MOSI_PIN GP7
 
 
-// my stuff
+// My drag scroll settings
+// #define PLOOPY_DRAGSCROLL_MULTIPLIER 0.3
 #define PLOOPY_DRAGSCROLL_INVERT
-#define PLOOPY_DRAGSCROLL_MULTIPLIER 0.2
+#define PLOOPY_DRAGSCROLL_MOMENTARY
+#define PLOOPY_DRAGSCROLL_DIVISOR_H 32.0
+#define PLOOPY_DRAGSCROLL_DIVISOR_V 32.0
+// others
+#define PMW33XX_CPI 600
+
+
+// Tap Dance for Drag Scroll and Middle Click
+#define TAPPING_TERM 175
+#define TAPPING_TERM_PER_KEY
+
+// dpi settings
+#define PLOOPY_DPI_OPTIONS \
+    { 300, 600 }
+
+// mouse acceleration settings
+// https://github.com/drashna/qmk_modules/tree/main/pointing_device_accel
+// #define POINTING_DEVICE_ACCEL_TAKEOFF 2.0      // lower/higher value = curve takes off more smoothly/abruptly
+// #define POINTING_DEVICE_ACCEL_GROWTH_RATE 0.25 // lower/higher value = curve reaches its upper limit slower/faster
+// #define POINTING_DEVICE_ACCEL_OFFSET 2.2       // lower/higher value = acceleration kicks in earlier/later
+// #define POINTING_DEVICE_ACCEL_LIMIT 0.2        // lower limit of accel curve (minimum acceleration factor)
