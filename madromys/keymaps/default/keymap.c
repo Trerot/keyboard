@@ -17,7 +17,24 @@
  */
 #include QMK_KEYBOARD_H
 
+enum custom_keycodes {
+    BOOTLOADER = SAFE_RANGE,
+};
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode == BOOTLOADER && record->event.pressed) {
+        reset_keyboard();
+        return false;
+    }
+    return true;
+}
+
+// Define your combos
+const uint16_t PROGMEM boot_combo[] = {KC_A, KC_LEFT, KC_RIGHT, DRAG_SCROLL, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(boot_combo, BOOTLOADER),
+};
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
