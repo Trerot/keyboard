@@ -96,8 +96,8 @@ const uint16_t PROGMEM combo0[] = { KC_E, KC_A, KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM combo1[] = { KC_O, KC_U, KC_L, KC_R, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(combo0, LALT(LCTL(KC_DELETE))),
-    COMBO(combo1, LGUI(KC_L))
+  [0] =   COMBO(combo0, LALT(LCTL(KC_DELETE))),
+  [1] =   COMBO(combo1, LGUI(KC_L))
 };
 
 // macros

@@ -29,7 +29,8 @@
 
 // i saw this on the ergodox config. betting its needed to set tapping to 120ms
 #define TAPPING_TERM 120
-
+// combo amount
+#define COMBO_COUNT 2
 // nkro on boot, remove to remove
 
 // #define FORCE_NKRO
