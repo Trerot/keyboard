@@ -19,40 +19,46 @@
 
 
 // Define your combos
-const uint16_t PROGMEM boot_combo[] = {KC_LEFT, KC_RIGHT, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM boot_combo[] = {KC_LEFT, KC_RIGHT, KC_UP, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(boot_combo, QK_BOOT)
+    COMBO(boot_combo, QK_BOOT),
 };
-
-
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
         LT(2,KC_BTN4), // Tap = Button 4, Hold = Layer 2
         KC_BTN5,
         DRAG_SCROLL,
-        KC_BTN2,
+        LT(3, KC_BTN2), // Tap = Button 2, Hold = Layer 3
         KC_BTN1,
         LT(1,KC_ENTER) // Tap = Enter, Hold = Layer 1
     ),
     [1] = LAYOUT(
-        KC_BSPC, 
+        KC_UP, 
         KC_LEFT,
         KC_RIGHT,
-        LGUI(KC_TAB),
-        KC_COLN, // Tap Dance for Colon/Semicolon
-        KC_F
+        LGUI(KC_TAB), // Windows + tab to switch apps
+        KC_DOWN,
+        KC_NO
     ),
     [2] = LAYOUT(
-        KC_A,
-        DPI_CONFIG, // DPI toggle to 100
-        KC_A,
-        KC_A,
-        KC_A,
-        KC_A
+        KC_NO,
+        DPI_CONFIG, // DPI toggle 300/600
+        KC_NO,
+        KC_NO,
+        LCTL(KC_C), // Copy
+        LCTL(KC_V) // Paste
+    ),
+    [3] = LAYOUT(
+        LCTL(KC_BSPC), // delete word left
+        KC_NO,
+        KC_NO,
+        KC_NO,
+        KC_BSPC,
+        KC_NO
     )
+
 };
 /*
 +--------+-------------+--------+--------+
