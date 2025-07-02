@@ -44,7 +44,7 @@
 
 // Tap Dance for Drag Scroll and Middle Click
 #define TAPPING_TERM 175
-#define TAPPING_TERM_PER_KEY
+// #define TAPPING_TERM_PER_KEY
 
 // dpi settings
 #define PLOOPY_DPI_OPTIONS \
