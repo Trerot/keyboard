@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_H,    KC_O,    KC_U,    KC_COMM,                                      KC_G,    KC_L,    KC_R,    KC_F,    KC_B,   KC_ESC,
   KC_LCTL,  KC_J,    KC_I,    KC_E,    KC_A,    KC_Y,                                         KC_D,    KC_T,    KC_S,    KC_N,    KC_P,   NO_MINS,
   KC_LSFT, KC_X,    KC_K,    NO_ARNG, KC_DOT,  NO_QUOT,                                      KC_V,    KC_M,    KC_C,    KC_W,    KC_Z,   MT(MOD_LSFT, KC_ENTER),
-  KC_NO, KC_NO, KC_NO,   KC_NO, LOWER,   KC_SPC,  KC_BSPC, RAISE,  KC_NO, KC_NO, KC_NO,  KC_NO
+  KC_NO, KC_NO, KC_NO,   KC_NO, LOWER,   KC_SPC,                                             KC_BSPC, RAISE,  KC_NO, KC_NO, KC_NO,  KC_NO
 ),
     /*  Lower
      * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE] = LAYOUT_ortho_4x12(
   NO_GRV,         KC_EXLM,        NO_AT,          KC_HASH,        NO_DLR,         KC_PERC,        KC_AMPR,        KC_HOME,        KC_PGDN,       KC_PGUP,        KC_END,         KC_TRANSPARENT,
   KC_DEL,         KC_4,           KC_2,           KC_3,           KC_1,           KC_5,           KC_6,           KC_0,           KC_8,           KC_9,           KC_7,           KC_TRANSPARENT,
-  KC_TRANSPARENT, KC_LGUI,         KC_TRANSPARENT, KC_EQL,         NO_PLUS,        NO_DQUO,        KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RGHT,        KC_TRANSPARENT,
+  KC_TRANSPARENT, KC_LGUI,         LCTL(KC_LGUI), NO_EQL,         NO_PLUS,        NO_DQUO,        KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RGHT,        KC_TRANSPARENT,
   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
     ),
     /*  Adjust (Lower + Raise)
