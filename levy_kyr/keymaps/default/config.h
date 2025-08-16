@@ -22,7 +22,7 @@
 /* split configs*/
 #define SERIAL_USART_FULL_DUPLEX   // Enable full duplex operation mode.
 #define SERIAL_USART_TX_PIN GP23     // USART TX pin
-#define SERIAL_USART_RX_PIN GP21     // USART RX pin
+#define SERIAL_USART_RX_PIN GP20     // USART RX pin
 #define SERIAL_USART_PIN_SWAP // pin swap since i did them pin to pin
 #define SERIAL_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the Serial implementation uses the PIO0 peripheral
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // so i dont need both buttons
