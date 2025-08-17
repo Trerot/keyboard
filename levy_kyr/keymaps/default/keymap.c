@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_H,    KC_O,    KC_U,    KC_COMM,                                      KC_G,    KC_L,    KC_R,    KC_F,    KC_B,   KC_ESC,
   KC_LCTL,  KC_J,    KC_I,    KC_E,    KC_A,    KC_Y,                                         KC_D,    KC_T,    KC_S,    KC_N,    KC_P,   NO_MINS,
   KC_LSFT, KC_X,    KC_K,    NO_ARNG, KC_DOT,  NO_QUOT,                                      KC_V,    KC_M,    KC_C,    KC_W,    KC_Z,   MT(MOD_LSFT, KC_ENTER),
-  KC_NO, KC_NO, KC_NO,   KC_NO, LOWER,   KC_SPC,                                             KC_BSPC, RAISE,  KC_NO, KC_NO, KC_NO,  KC_NO
+  KC_NO, KC_NO,     LOWER,   KC_SPC, KC_NO,    KC_NO,                                     KC_NO, KC_NO, KC_BSPC, RAISE,    KC_NO,  KC_NO
 ),
     /*  Lower
      * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
@@ -94,10 +94,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t PROGMEM combo0[] = { KC_E, KC_A, KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM combo1[] = { KC_O, KC_U, KC_L, KC_R, COMBO_END};
+const uint16_t PROGMEM combo2[] = { KC_COMM, KC_Y, KC_G, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
   [0] =   COMBO(combo0, LALT(LCTL(KC_DELETE))),
-  [1] =   COMBO(combo1, LGUI(KC_L))
+  [1] =   COMBO(combo1, LGUI(KC_L)),
+  [2] =   COMBO(combo2, QK_BOOTLOADER)
 };
 
 // macros
