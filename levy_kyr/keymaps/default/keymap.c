@@ -9,11 +9,13 @@ enum layers {
   _LOWER,
   _RAISE,
   _ADJUST,
+  _ARROW
 };
 
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define ARROW MO(_ARROW)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* keys with a / in them, like SPC/sft are two keys. First key when tapped, second key when held for 120ms. 
@@ -30,9 +32,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_BEAKL] = LAYOUT_ortho_4x12(
   KC_TAB,  KC_Q,    KC_H,    KC_O,    KC_U,    KC_COMM,                                      KC_G,    KC_L,    KC_R,    KC_F,    KC_B,   KC_ESC,
-  KC_LCTL,  KC_J,    KC_I,    KC_E,    KC_A,    KC_Y,                                         KC_D,    KC_T,    KC_S,    KC_N,    KC_P,   NO_MINS,
-  KC_LSFT, KC_X,    KC_K,    NO_ARNG, KC_DOT,  NO_QUOT,                                      KC_V,    KC_M,    KC_C,    KC_W,    KC_Z,   MT(MOD_LSFT, KC_ENTER),
-  KC_NO, KC_NO,     LOWER,   KC_SPC, KC_NO,    KC_NO,                                     KC_NO, KC_NO, KC_BSPC, RAISE,    KC_NO,  KC_NO
+  KC_LSFT,  KC_J,    KC_I,    KC_E,    KC_A,    KC_Y,                                         KC_D,    KC_T,    KC_S,    KC_N,    KC_P,   MT(MOD_LSFT, KC_ENTER),
+  KC_LCTL, KC_X,    KC_K,    NO_ARNG, KC_DOT,  NO_QUOT,                                      KC_V,    KC_M,    KC_C,    KC_W,    KC_Z,   NO_MINS,
+  KC_LGUI, KC_LALT,     LOWER,   KC_SPC, KC_NO,    KC_NO,                                     KC_NO, ARROW, KC_BSPC, RAISE,    KC_LSFT,  KC_NO
 ),
     /*  Lower
      * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
@@ -86,7 +88,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRANSPARENT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_AUDIO_VOL_DOWN, KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, KC_AUDIO_VOL_UP, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
   KC_TRANSPARENT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,    KC_TRANSPARENT,      KC_TRANSPARENT,      KC_TRANSPARENT,  KC_TRANSPARENT, QK_BOOTLOADER,  QK_REBOOT,      KC_TRANSPARENT
 
-)
+),
+    [_ARROW] =  LAYOUT_ortho_4x12( 
+  KC_F1,                 KC_F1,          KC_F2,          KC_F3,          KC_F4,             KC_F5,               LGUI(LCTL(KC_LEFT)),               KC_HOME,           KC_UP,          KC_END, LGUI(LCTL(KC_RIGHT)), KC_TRANSPARENT,
+  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_HOME,           KC_PAGE_DOWN,        LCTL(LSFT(KC_TAB)),             KC_LEFT,          KC_DOWN, KC_RIGHT, LCTL(KC_TAB), KC_F12,
+  KC_TRANSPARENT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_AUDIO_VOL_DOWN, KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, KC_AUDIO_VOL_UP, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+  KC_TRANSPARENT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,    KC_TRANSPARENT,      KC_PAGE_DOWN,      KC_TRANSPARENT,  KC_PGUP, KC_TRANSPARENT,  KC_TRANSPARENT,      KC_TRANSPARENT
+
+    )
 
 };
 
