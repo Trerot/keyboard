@@ -89,6 +89,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRANSPARENT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,    KC_TRANSPARENT,      KC_TRANSPARENT,      KC_TRANSPARENT,  KC_TRANSPARENT, QK_BOOTLOADER,  QK_REBOOT,      KC_TRANSPARENT
 
 ),
+    /*  Arrow
+     * ┌─────┬─────┬─────┬─────┬─────┬─────┐                   ┌─────┬─────┬─────┬─────┬─────┬───────┐
+     * │  `  │  F1 │  F2 │  F3 │  F4 │  F5 │                   │De-L │HOME │  Up │END  │De-R │       │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │C+A+D│     │     │     │ Home│Pgdwn│                   │C+S+T│Left │ Down│Right│C+Tab│  F12  │
+     * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
+     * │ sft │     │     │     │Vol- │Prev │                   │Next │Vol+ │     │     │     │       │
+     * └─────┴─────┴─────┼─────┼─────┼─────┤────────┐    ┌─────├─────┼─────┼─────┴─────┴─────┴───────┘
+     *                         │     │Lower│        │    │     │Raise│     │
+     *                         └─────┴─────┴────────┘    └─────┴─────┴─────┘ 
+     */
+
     [_ARROW] =  LAYOUT_ortho_4x12( 
   KC_F1,                 KC_F1,          KC_F2,          KC_F3,          KC_F4,             KC_F5,               LGUI(LCTL(KC_LEFT)),               KC_HOME,           KC_UP,          KC_END, LGUI(LCTL(KC_RIGHT)), KC_TRANSPARENT,
   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_HOME,           KC_PAGE_DOWN,        LCTL(LSFT(KC_TAB)),             KC_LEFT,          KC_DOWN, KC_RIGHT, LCTL(KC_TAB), KC_F12,
@@ -104,11 +116,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const uint16_t PROGMEM combo0[] = { KC_E, KC_A, KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM combo1[] = { KC_O, KC_U, KC_L, KC_R, COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_COMM, KC_Y, KC_G, KC_D, COMBO_END};
+const uint16_t PROGMEM combo3[] = { KC_P, KC_N, KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM combo4[] = { KC_U, KC_A, KC_L, KC_T, COMBO_END};
+
 
 combo_t key_combos[] = {
   [0] =   COMBO(combo0, LALT(LCTL(KC_DELETE))),
   [1] =   COMBO(combo1, LGUI(KC_L)),
   [2] =   COMBO(combo2, QK_BOOTLOADER)
+  [3] =   COMBO(combo3, KC_MPLY)
+  [4] =   COMBO(combo4, QK_REBOOT)
 };
 
 // macros
