@@ -123,8 +123,8 @@ const uint16_t PROGMEM combo4[] = { KC_U, KC_A, KC_L, KC_T, COMBO_END};
 combo_t key_combos[] = {
   [0] =   COMBO(combo0, LALT(LCTL(KC_DELETE))),
   [1] =   COMBO(combo1, LGUI(KC_L)),
-  [2] =   COMBO(combo2, QK_BOOTLOADER)
-  [3] =   COMBO(combo3, KC_MPLY)
+  [2] =   COMBO(combo2, QK_BOOTLOADER),
+  [3] =   COMBO(combo3, KC_MPLY),
   [4] =   COMBO(combo4, QK_REBOOT)
 };
 
