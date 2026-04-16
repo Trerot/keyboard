@@ -27,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├─────┼─────┼─────┼─────┼─────┼─────┤                   ├─────┼─────┼─────┼─────┼─────┼───────┤
      * │ Sft │  X  │  K  │  Å  │  .  │ '   │                   │  V  │  M  │  C  │  W  │  Z  │Ent/sft│
      * └─────┴─────┴─────┴─────┼─────┼─────┤────────┐    ┌─────├─────┼─────┼─────┴─────┴─────┴───────┘
-     *                         │Lower│Space│ ?CTRL? │    │     │BSPC │Raise│
+     *                         │Lower│Space│ ?CTRL? │    │ARROW│BSPC │Raise│
      *                         └─────┴─────┴────────┘    └─────┴─────┴─────┘ 
      */
     [_BEAKL] = LAYOUT_ortho_4x12(
